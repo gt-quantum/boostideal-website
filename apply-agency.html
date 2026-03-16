@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Apply — BoostIdeal Agency Partner</title>
+  <meta content="Apply to be a BoostIdeal agency partner. 3 spots left. $50/month per client instance locked in permanently." name="description">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="images/favicon.svg" rel="shortcut icon" type="image/x-icon">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F8F5F0; --ink: #141210; --ink-mid: #4A4540; --ink-light: #7A726A;
+      --ink-faint: #B0A89E; --amber: #D4860A; --amber-light: #FFF3DC;
+      --rule: #E0D8D0; --surface: #FFFFFF;
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+    }
+
+    /* ── NAV ── */
+    .apply-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(248,245,240,0.85); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule); padding: 0 40px; height: 56px;
+    }
+    .apply-nav-left { display: flex; align-items: center; gap: 28px; }
+    .apply-nav-left a { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+    .apply-nav-left a:hover { color: var(--ink); }
+    .apply-nav-logo img { height: 22px; }
+    .apply-nav-right { display: flex; align-items: center; gap: 16px; }
+    .apply-nav-spots {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-light);
+    }
+    .apply-nav-spots .spot-dot {
+      display: inline-block; width: 6px; height: 6px;
+      background: var(--amber); border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .btn-close {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 6px;
+      background: transparent; border: 1px solid var(--rule);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      color: var(--ink-light); font-size: 16px; line-height: 1;
+      text-decoration: none;
+    }
+    .btn-close:hover { border-color: var(--ink-light); background: var(--surface); color: var(--ink); }
+
+    /* ── PROGRESS ── */
+    .progress-bar {
+      position: fixed; top: 56px; left: 0; right: 0; z-index: 99;
+      height: 3px; background: var(--rule);
+    }
+    .progress-fill {
+      height: 100%; background: var(--amber);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── FORM CONTAINER ── */
+    .form-viewport {
+      position: fixed; top: 59px; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+    }
+
+    /* ── SLIDES ── */
+    .slide {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 40px;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      opacity: 0; transform: translateY(40px);
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .slide.active {
+      opacity: 1; transform: translateY(0);
+      pointer-events: auto;
+    }
+    .slide.exit-up {
+      opacity: 0; transform: translateY(-40px);
+      pointer-events: none;
+    }
+
+    .slide-inner { width: 100%; max-width: 600px; padding-top: 10vh; padding-bottom: 60px; }
+
+    /* ── STEP COUNTER ── */
+    .step-counter {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ink-faint); margin-bottom: 20px;
+    }
+    .step-counter .current-num { color: var(--amber); }
+
+    /* ── QUESTION ── */
+    .question {
+      font-family: 'Fraunces', serif; font-size: 32px;
+      font-weight: 600; letter-spacing: -0.02em;
+      line-height: 1.25; margin-bottom: 10px;
+    }
+    .question-sub {
+      font-size: 15px; color: var(--ink-mid); line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* ── TEXT INPUT ── */
+    .field-input {
+      display: block; width: 100%;
+      font-family: 'DM Sans', sans-serif; font-size: 20px;
+      color: var(--ink); background: transparent;
+      border: none; border-bottom: 2px solid var(--rule);
+      padding: 12px 0; outline: none;
+      transition: border-color 0.3s;
+    }
+    .field-input::placeholder { color: var(--ink-faint); }
+    .field-input:focus { border-bottom-color: var(--amber); }
+
+    /* ── TEXTAREA ── */
+    .field-textarea {
+      display: block; width: 100%;
+      font-family: 'DM Sans', sans-serif; font-size: 17px;
+      color: var(--ink); background: var(--surface);
+      border: 1px solid var(--rule); border-radius: 10px;
+      padding: 16px 20px; outline: none; resize: vertical;
+      min-height: 120px; line-height: 1.6;
+      transition: border-color 0.3s;
+    }
+    .field-textarea::placeholder { color: var(--ink-faint); }
+    .field-textarea:focus { border-color: var(--amber); }
+
+    /* ── OPTION CARDS (single / multi select) ── */
+    .option-grid { display: flex; flex-direction: column; gap: 10px; }
+    .option-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--surface); border: 1px solid var(--rule);
+      border-radius: 10px; padding: 16px 20px;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .option-card:hover { border-color: var(--ink-light); }
+    .option-card.selected {
+      border-color: var(--amber); background: var(--amber-light);
+    }
+    .option-key {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; flex-shrink: 0;
+      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
+      border: 1px solid var(--rule); border-radius: 6px;
+      color: var(--ink-light); background: var(--bg);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .option-card.selected .option-key {
+      border-color: var(--amber); color: #fff; background: var(--amber);
+    }
+    .option-label { font-size: 15px; color: var(--ink); line-height: 1.4; }
+    .option-card.selected .option-label { color: var(--ink); }
+    .multi-hint {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--ink-faint); margin-bottom: 14px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .other-input {
+      display: block; width: 100%; margin-top: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px;
+      color: var(--ink); background: var(--surface);
+      border: 1px solid var(--rule); border-radius: 8px;
+      padding: 12px 16px; outline: none;
+      transition: border-color 0.3s;
+    }
+    .other-input::placeholder { color: var(--ink-faint); }
+    .other-input:focus { border-color: var(--amber); }
+
+    /* ── BUTTONS ── */
+    .btn-next {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--ink); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      padding: 10px 22px; border-radius: 6px;
+      border: none; cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .btn-next:hover { background: #2a2724; }
+    .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+    .btn-next .arrow { transition: transform 0.2s; }
+    .btn-next:not(:disabled):hover .arrow { transform: translateX(3px); }
+
+    .btn-row {
+      display: flex; align-items: center; gap: 24px; margin-top: 28px;
+    }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; color: var(--ink-faint);
+      font-family: 'DM Sans', sans-serif; font-size: 13px;
+      padding: 0; border: none;
+      cursor: pointer; transition: color 0.2s;
+    }
+    .btn-back:hover { color: var(--ink); }
+
+    /* ── KEYBOARD HINT ── */
+    .key-hint {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--ink-faint); margin-top: 16px;
+    }
+    .key-hint kbd {
+      display: inline-block; padding: 2px 8px;
+      background: var(--surface); border: 1px solid var(--rule);
+      border-radius: 4px; font-family: inherit; font-size: 11px;
+    }
+
+    /* ── SUCCESS SCREEN ── */
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--amber-light); display: flex;
+      align-items: center; justify-content: center;
+      margin-bottom: 24px; font-size: 28px;
+    }
+    .success-title {
+      font-family: 'Fraunces', serif; font-size: 36px;
+      font-weight: 600; letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .success-body {
+      font-size: 17px; color: var(--ink-mid); line-height: 1.7;
+      max-width: 480px; margin-bottom: 32px;
+    }
+    .success-detail {
+      background: var(--surface); border: 1px solid var(--rule);
+      border-radius: 10px; padding: 20px 24px;
+      border-left: 3px solid var(--amber);
+    }
+    .success-detail-label {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ink-faint); margin-bottom: 8px;
+    }
+    .success-detail p {
+      font-size: 14px; color: var(--ink-mid); line-height: 1.6;
+    }
+    .btn-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--ink);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      padding: 12px 24px; border-radius: 8px;
+      border: 1px solid var(--rule); cursor: pointer;
+      transition: border-color 0.2s; margin-top: 24px; text-decoration: none;
+    }
+    .btn-home:hover { border-color: var(--ink-light); }
+
+    /* ── SENDING STATE ── */
+    .btn-next.sending {
+      pointer-events: none; opacity: 0.7;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .spinner {
+      display: inline-block; width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .apply-nav { padding: 0 20px; }
+      .slide { padding: 24px; }
+      .question { font-size: 24px; }
+      .field-input { font-size: 18px; }
+      .success-title { font-size: 28px; }
+    }
+  </style>
+
+  <!-- Analytics (same as main site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDZ3BCVVRN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('set','developer_id.dZGVlNj',true);gtag('js',new Date());gtag('config','G-YDZ3BCVVRN');</script>
+  <script type="text/javascript" id="hs-script-loader" async defer src="https://js-na1.hs-scripts.com/47071366.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="apply-nav">
+    <div class="apply-nav-left">
+      <a href="index.html" class="apply-nav-logo"><img src="images/BoostIdeal-warm.svg" alt="BoostIdeal"></a>
+    </div>
+    <span class="apply-nav-spots"><span class="spot-dot"></span> 3 agency spots left</span>
+    <div class="apply-nav-right">
+      <a href="agencies.html" class="btn-close" title="Exit">&times;</a>
+    </div>
+  </nav>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+  </div>
+
+  <!-- FORM VIEWPORT -->
+  <div class="form-viewport" id="formViewport">
+
+    <!-- SLIDE 0: Intro -->
+    <div class="slide active" data-slide="0">
+      <div class="slide-inner">
+        <div class="step-counter">Agency Partner Application</div>
+        <div class="question">We are looking for 3 agencies to build this with.</div>
+        <p class="question-sub">This takes about 2 minutes. We will respond the same day. No sales process. Just a short conversation to see if your agency and your clients are a good fit.</p>
+        <button class="btn-next" onclick="goNext()">
+          Start application <span class="arrow">&rarr;</span>
+        </button>
+        <div class="key-hint"><kbd>Enter</kbd> to continue</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 1: Name -->
+    <div class="slide" data-slide="1">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">1</span> / 8</div>
+        <div class="question">What's your name?</div>
+        <p class="question-sub">First and last is great.</p>
+        <input class="field-input" type="text" id="field-name" placeholder="Jane Smith" autocomplete="name" autofocus>
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-1" disabled onclick="goNext()">
+            Continue <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+        <div class="key-hint"><kbd>Enter</kbd> to continue</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Email -->
+    <div class="slide" data-slide="2">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">2</span> / 8</div>
+        <div class="question">What's your work email?</div>
+        <p class="question-sub">We will use this to reach out. Same day.</p>
+        <input class="field-input" type="email" id="field-email" placeholder="jane@agency.com" autocomplete="email">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-2" disabled onclick="goNext()">
+            Continue <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+        <div class="key-hint"><kbd>Enter</kbd> to continue</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Agency -->
+    <div class="slide" data-slide="3">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">3</span> / 8</div>
+        <div class="question">What agency are you with?</div>
+        <p class="question-sub">And what do your clients typically sell? One sentence is perfect.</p>
+        <input class="field-input" type="text" id="field-company" placeholder="GrowthCo Agency — our clients are B2B SaaS and manufacturing companies">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-3" disabled onclick="goNext()">
+            Continue <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+        <div class="key-hint"><kbd>Enter</kbd> to continue</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Client accounts -->
+    <div class="slide" data-slide="4">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">4</span> / 8</div>
+        <div class="question">How many client accounts does your agency manage?</div>
+        <p class="question-sub">Active clients where you would use this.</p>
+        <div class="option-grid" id="options-team" data-single="true">
+          <div class="option-card" data-value="1-3 clients" onclick="selectOption(this, 'field-team')">
+            <span class="option-key">A</span>
+            <span class="option-label">1 – 3 clients</span>
+          </div>
+          <div class="option-card" data-value="4-10 clients" onclick="selectOption(this, 'field-team')">
+            <span class="option-key">B</span>
+            <span class="option-label">4 – 10 clients</span>
+          </div>
+          <div class="option-card" data-value="11-25 clients" onclick="selectOption(this, 'field-team')">
+            <span class="option-key">C</span>
+            <span class="option-label">11 – 25 clients</span>
+          </div>
+          <div class="option-card" data-value="25+ clients" onclick="selectOption(this, 'field-team')">
+            <span class="option-key">D</span>
+            <span class="option-label">25+ clients</span>
+          </div>
+        </div>
+        <input type="hidden" id="field-team">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: CRM -->
+    <div class="slide" data-slide="5">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">5</span> / 8</div>
+        <div class="question">Are your clients on HubSpot?</div>
+        <p class="question-sub">We build natively inside HubSpot. This helps us understand your client setup.</p>
+        <div class="option-grid" id="options-crm" data-single="true">
+          <div class="option-card" data-value="Most/all are on HubSpot" onclick="selectOption(this, 'field-crm')">
+            <span class="option-key">A</span>
+            <span class="option-label">Most or all of our clients are on HubSpot</span>
+          </div>
+          <div class="option-card" data-value="Some are, some aren't" onclick="selectOption(this, 'field-crm')">
+            <span class="option-key">B</span>
+            <span class="option-label">Some are on HubSpot, some are not</span>
+          </div>
+          <div class="option-card" data-value="We're moving clients to HubSpot" onclick="selectOption(this, 'field-crm')">
+            <span class="option-key">C</span>
+            <span class="option-label">We are moving clients to HubSpot</span>
+          </div>
+          <div class="option-card" data-value="Most use other CRMs" onclick="selectOption(this, 'field-crm')">
+            <span class="option-key">D</span>
+            <span class="option-label">Most of our clients use other CRMs</span>
+          </div>
+        </div>
+        <input type="hidden" id="field-crm">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Proving Value Challenge -->
+    <div class="slide" data-slide="6">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">6</span> / 8</div>
+        <div class="question">What is your biggest challenge proving value to clients?</div>
+        <p class="question-sub">The thing that, if you solved it tomorrow, would change the way your clients see your agency.</p>
+        <div class="multi-hint">Select all that apply</div>
+        <div class="option-grid" id="options-gtm">
+          <div class="option-card" data-value="Clients question lead quality" onclick="selectOption(this, 'field-gtm')">
+            <span class="option-key">A</span>
+            <span class="option-label">Clients question the quality of leads we send them</span>
+          </div>
+          <div class="option-card" data-value="No way to show which leads we sent converted" onclick="selectOption(this, 'field-gtm')">
+            <span class="option-key">B</span>
+            <span class="option-label">No way to show which leads we sent actually converted</span>
+          </div>
+          <div class="option-card" data-value="Hard to differentiate from other agencies" onclick="selectOption(this, 'field-gtm')">
+            <span class="option-key">C</span>
+            <span class="option-label">Hard to differentiate from other agencies</span>
+          </div>
+          <div class="option-card" data-value="Clients churn because they can't see our impact" onclick="selectOption(this, 'field-gtm')">
+            <span class="option-key">D</span>
+            <span class="option-label">Clients churn because they can not see our impact</span>
+          </div>
+        </div>
+        <input class="other-input" type="text" placeholder="Something else? Type it here..." oninput="handleOtherInput(this, 'field-gtm')">
+        <input type="hidden" id="field-gtm">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-6" disabled onclick="goNext()">
+            Continue <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Ops Challenge -->
+    <div class="slide" data-slide="7">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">7</span> / 8</div>
+        <div class="question">What is your biggest operational challenge across client accounts?</div>
+        <p class="question-sub">The thing keeping your systems, data, or processes from working the way they should across clients.</p>
+        <div class="multi-hint">Select all that apply</div>
+        <div class="option-grid" id="options-ops">
+          <div class="option-card" data-value="Managing multiple HubSpot instances" onclick="selectOption(this, 'field-ops')">
+            <span class="option-key">A</span>
+            <span class="option-label">Managing multiple HubSpot instances</span>
+          </div>
+          <div class="option-card" data-value="No consistent scoring across clients" onclick="selectOption(this, 'field-ops')">
+            <span class="option-key">B</span>
+            <span class="option-label">No consistent scoring or prioritization across clients</span>
+          </div>
+          <div class="option-card" data-value="Manual reporting on lead quality" onclick="selectOption(this, 'field-ops')">
+            <span class="option-key">C</span>
+            <span class="option-label">Manual reporting on lead quality</span>
+          </div>
+          <div class="option-card" data-value="Inconsistent data across client CRMs" onclick="selectOption(this, 'field-ops')">
+            <span class="option-key">D</span>
+            <span class="option-label">Inconsistent data across client CRMs</span>
+          </div>
+        </div>
+        <input class="other-input" type="text" placeholder="Something else? Type it here..." oninput="handleOtherInput(this, 'field-ops')">
+        <input type="hidden" id="field-ops">
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-7" disabled onclick="goNext()">
+            Continue <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Anything else -->
+    <div class="slide" data-slide="8">
+      <div class="slide-inner">
+        <div class="step-counter"><span class="current-num">8</span> / 8</div>
+        <div class="question">Anything else we should know?</div>
+        <p class="question-sub">Optional. Context about your agency, your clients, what you have tried before — whatever feels useful.</p>
+        <textarea class="field-textarea" id="field-notes" placeholder="We manage HubSpot for 8 B2B clients and our biggest challenge is proving the leads we source are worth it..."></textarea>
+        <div class="btn-row">
+          <button class="btn-back" onclick="goPrev()">&larr; Back</button>
+          <button class="btn-next" id="btn-submit" onclick="submitForm()">
+            Submit application <span class="arrow">&rarr;</span>
+          </button>
+        </div>
+        <div class="key-hint"><kbd>Cmd</kbd> + <kbd>Enter</kbd> to submit</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Success -->
+    <div class="slide" data-slide="9">
+      <div class="slide-inner">
+        <div class="success-icon">&#10003;</div>
+        <div class="success-title">You're in. We will be in touch today.</div>
+        <p class="success-body">We review every application personally. If we think there is a good fit, you will hear from us the same day — usually within a couple of hours.</p>
+        <div class="success-detail">
+          <div class="success-detail-label">What happens next</div>
+          <p>One of us will reach out to schedule a 30-minute call. We will ask about your clients, their markets, and how your agency works today. If it is a fit, we start setting up scoring across your first client accounts that same week.</p>
+        </div>
+        <a href="agencies.html" class="btn-home">&larr; Back to agency partner page</a>
+      </div>
+    </div>
+
+  </div><!-- end form-viewport -->
+
+  <script>
+    var currentSlide = 0;
+    var totalSteps = 8;
+    var slides = document.querySelectorAll('.slide');
+
+    function updateProgress() {
+      var pct = currentSlide === 0 ? 0 : Math.round((currentSlide / totalSteps) * 100);
+      if (currentSlide > totalSteps) pct = 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+    }
+
+    function showSlide(index) {
+      slides.forEach(function(s, i) {
+        s.classList.remove('active', 'exit-up');
+        if (i < index) s.classList.add('exit-up');
+      });
+      slides[index].classList.add('active');
+      currentSlide = index;
+      updateProgress();
+
+      // Focus input on the new slide
+      setTimeout(function() {
+        var input = slides[index].querySelector('.field-input, .field-textarea');
+        if (input) input.focus();
+      }, 300);
+    }
+
+    function goNext() {
+      if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function goPrev() {
+      if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    // Option card selection — single-select with auto-advance, or multi-select
+    function selectOption(card, fieldId) {
+      var parent = card.parentElement;
+      var isSingle = parent.getAttribute('data-single') === 'true';
+
+      if (isSingle) {
+        parent.querySelectorAll('.option-card').forEach(function(c) {
+          c.classList.remove('selected');
+        });
+        card.classList.add('selected');
+        document.getElementById(fieldId).value = card.getAttribute('data-value');
+
+        var slideEl = card.closest('.slide');
+        var btn = slideEl.querySelector('.btn-next');
+        if (btn) btn.disabled = false;
+
+        // Auto-advance for single-select
+        setTimeout(goNext, 400);
+      } else {
+        card.classList.toggle('selected');
+        updateMultiValue(card.closest('.slide'), fieldId);
+      }
+    }
+
+    // Gather multi-select values + other input into the hidden field
+    function updateMultiValue(slideEl, fieldId) {
+      var parent = slideEl.querySelector('.option-grid');
+      var values = [];
+      parent.querySelectorAll('.option-card.selected').forEach(function(c) {
+        values.push(c.getAttribute('data-value'));
+      });
+      var otherInput = slideEl.querySelector('.other-input');
+      if (otherInput && otherInput.value.trim()) {
+        values.push(otherInput.value.trim());
+      }
+      document.getElementById(fieldId).value = values.join('; ');
+
+      var btn = slideEl.querySelector('.btn-next');
+      if (btn) btn.disabled = values.length === 0;
+    }
+
+    // "Other" text input handler
+    function handleOtherInput(input, fieldId) {
+      updateMultiValue(input.closest('.slide'), fieldId);
+    }
+
+    // Keyboard shortcuts for option cards
+    document.addEventListener('keydown', function(e) {
+      var activeSlide = slides[currentSlide];
+      if (!activeSlide) return;
+
+      // Don't intercept keys when typing in an input
+      if (e.target.classList.contains('other-input')) return;
+
+      var optionGrid = activeSlide.querySelector('.option-grid');
+      if (optionGrid) {
+        var keyMap = { a: 0, b: 1, c: 2, d: 3, e: 4 };
+        var key = e.key.toLowerCase();
+        if (keyMap[key] !== undefined) {
+          var cards = optionGrid.querySelectorAll('.option-card');
+          if (cards[keyMap[key]]) {
+            cards[keyMap[key]].click();
+          }
+        }
+      }
+    });
+
+    // Text input validation — enable/disable next buttons
+    function setupValidation(fieldId, btnId) {
+      var field = document.getElementById(fieldId);
+      var btn = document.getElementById(btnId);
+      if (!field || !btn) return;
+      field.addEventListener('input', function() {
+        btn.disabled = field.value.trim() === '';
+      });
+    }
+    setupValidation('field-name', 'btn-1');
+    setupValidation('field-email', 'btn-2');
+    setupValidation('field-company', 'btn-3');
+
+    // Enter key to advance
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        var activeSlide = slides[currentSlide];
+        if (!activeSlide) return;
+
+        // Cmd+Enter on the notes slide submits
+        if (currentSlide === 8 && (e.metaKey || e.ctrlKey)) {
+          e.preventDefault();
+          submitForm();
+          return;
+        }
+
+        // Don't advance from textarea on plain Enter
+        if (activeSlide.querySelector('.field-textarea') && !e.metaKey && !e.ctrlKey) return;
+
+        // Don't advance from option slides (auto-advance handles it)
+        if (activeSlide.querySelector('.option-grid')) return;
+
+        var btn = activeSlide.querySelector('.btn-next');
+        if (btn && !btn.disabled) {
+          e.preventDefault();
+          btn.click();
+        }
+      }
+    });
+
+    // Submit to Slack
+    function submitForm() {
+      var btn = document.getElementById('btn-submit');
+      btn.classList.add('sending');
+      btn.innerHTML = '<span class="spinner"></span> Sending...';
+
+      var data = {
+        name: document.getElementById('field-name').value.trim(),
+        email: document.getElementById('field-email').value.trim(),
+        company: document.getElementById('field-company').value.trim(),
+        team_size: document.getElementById('field-team').value,
+        crm: document.getElementById('field-crm').value,
+        gtm_challenge: document.getElementById('field-gtm').value,
+        ops_challenge: document.getElementById('field-ops').value,
+        notes: document.getElementById('field-notes').value.trim()
+      };
+
+      var slackPayload = {
+        blocks: [
+          {
+            type: "header",
+            text: { type: "plain_text", text: "New Agency Partner Application", emoji: true }
+          },
+          {
+            type: "section",
+            fields: [
+              { type: "mrkdwn", text: "*Name:*\n" + data.name },
+              { type: "mrkdwn", text: "*Email:*\n" + data.email }
+            ]
+          },
+          {
+            type: "section",
+            fields: [
+              { type: "mrkdwn", text: "*Agency / What clients sell:*\n" + data.company },
+              { type: "mrkdwn", text: "*Client accounts:*\n" + data.team_size }
+            ]
+          },
+          {
+            type: "section",
+            fields: [
+              { type: "mrkdwn", text: "*Client CRMs:*\n" + data.crm },
+              { type: "mrkdwn", text: "*Proving value challenge:*\n" + data.gtm_challenge }
+            ]
+          },
+          {
+            type: "section",
+            text: { type: "mrkdwn", text: "*Ops challenge across clients:*\n" + data.ops_challenge }
+          }
+        ]
+      };
+
+      if (data.notes) {
+        slackPayload.blocks.push({
+          type: "section",
+          text: { type: "mrkdwn", text: "*Additional notes:*\n" + data.notes }
+        });
+      }
+
+      slackPayload.blocks.push(
+        { type: "divider" },
+        {
+          type: "section",
+          text: { type: "mrkdwn", text: "<!channel> New agency partner application just came in." }
+        },
+        {
+          type: "context",
+          elements: [
+            { type: "mrkdwn", text: "Submitted from boostideal.com/apply-agency · " + new Date().toLocaleString() }
+          ]
+        }
+      );
+
+      fetch('/api/apply-agency', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(slackPayload)
+      }).then(function() {
+        showSlide(9);
+      }).catch(function() {
+        // Still show success — we don't want to block the user
+        showSlide(9);
+      });
+
+      // Also push to HubSpot if available
+      if (window._hsq) {
+        window._hsq.push(['identify', { email: data.email, firstname: data.name.split(' ')[0], lastname: data.name.split(' ').slice(1).join(' '), company: data.company }]);
+        window._hsq.push(['trackEvent', { id: 'agency-partner-application' }]);
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "partner": {
+    "spots": "7",
+    "founding_price": "$250",
+    "launch_price": "$1,500",
+    "guarantee": "10 accounts worth reaching out to in 30 days. Email written, context ready. If we miss, we keep going free."
+  },
+  "ticker_partner": [
+    "Acme Fabrication · Compliance event · Score 94 · Email drafted and waiting",
+    "Riverside Construction · New project · Score 88 · Asset matched · Ready to send",
+    "Northgate Medical · Customer health drop · CS alerted · Renewal in 67 days"
+  ],
+  "ticker_home": [
+    "OSHA violation filed · Score 94 · Email drafted · Waiting for you",
+    "Riverside Construction · Permit pull $4.2M · Score 88 · Task created",
+    "Northgate Medical · CMS finding · Churn risk elevated · Alert sent"
+  ]
+}

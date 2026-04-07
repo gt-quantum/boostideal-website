@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YDZ3BCVVRN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YDZ3BCVVRN');
+</script>
+<!-- ADD HOTJAR SITE ID HERE -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoostIdeal — Your team should be closing. Not figuring out who to call.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#F8F5F0;color:#141210;font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#F8F5F0;--bg-alt:#F2EDE6;--surface:#FFFFFF;
+  --ink:#141210;--ink-mid:#4A4540;--ink-light:#7A726A;--ink-faint:#B0A89E;
+  --amber:#D4860A;--amber-light:#FFF3DC;--rule:#E0D8D0;
+  --purple:#3D2785;--purple-mid:#5B3FCE;
+  --green:#27AE60;--red:#C0392B;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.ticker-wrap{background:var(--purple);overflow:hidden;padding:9px 0}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 48s linear infinite}
+.tick{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.5);padding:0 32px;display:flex;align-items:center;gap:8px;flex-shrink:0;text-transform:uppercase}
+.tick.hot{color:var(--amber)}
+.tdot{width:4px;height:4px;border-radius:50%;background:var(--amber);flex-shrink:0}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(248,245,240,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:58px}
+.nav-l{display:flex;gap:28px}
+.nav-link{font-size:13px;color:var(--ink-light);text-decoration:none}
+.nav-link:hover{color:var(--ink)}
+.wm{text-decoration:none;position:absolute;left:50%;transform:translateX(-50%)}
+.logo{height:26px;width:auto}
+.nav-r{display:flex;align-items:center;gap:16px}
+.nav-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);display:flex;align-items:center;gap:6px}
+.npd{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s ease infinite}
+.nav-back{background:var(--ink);color:var(--bg);text-decoration:none;font-size:13px;font-weight:500;padding:8px 18px;border-radius:6px}
+
+/* HERO — 2 col */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 58px - 38px);border-bottom:1px solid var(--rule);animation:fadeUp .5s ease .1s both}
+.hero-left{padding:72px 56px 72px 48px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--rule)}
+.kicker{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:'';width:18px;height:1px;background:var(--amber);display:block}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,52px);font-weight:600;line-height:1.05;letter-spacing:-.03em;color:var(--ink);margin-bottom:16px}
+h1 em{font-style:italic;font-weight:300;color:var(--ink-mid)}
+.deck{font-size:16px;color:var(--ink-mid);line-height:1.7;max-width:460px;margin-bottom:28px}
+.deck strong{color:var(--ink);font-weight:500}
+.btn-ink{background:var(--ink);color:var(--bg);text-decoration:none;font-size:14px;font-weight:500;padding:13px 24px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
+.hero-note{margin-top:10px;font-size:12px;color:var(--ink-faint)}
+
+/* COVERAGE — three columns under CTA */
+.coverage{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:28px;padding-top:24px;border-top:1px solid var(--rule)}
+.cov{padding-right:16px}
+.cov:last-child{padding-right:0;padding-left:16px;border-left:1px solid var(--rule)}
+.cov:nth-child(2){padding:0 16px;border-left:1px solid var(--rule)}
+.cov-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.cov-title{font-family:'Fraunces',serif;font-size:13px;font-weight:500;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px;line-height:1.2}
+.cov-body{font-size:11px;color:var(--ink-light);line-height:1.5}
+.guarantee{margin-top:16px;font-size:12px;color:var(--ink-mid);display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.guarantee svg{flex-shrink:0;margin-top:2px}
+
+/* HERO RIGHT — morning view */
+.hero-right{background:var(--surface);display:flex;align-items:center;justify-content:center;padding:36px 32px;overflow:hidden}
+.mv{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(61,39,133,.1),0 2px 8px rgba(0,0,0,.06)}
+.mv-hdr{padding:13px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;background:var(--bg-alt)}
+.mv-hdr-l .mv-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.mv-hdr-l .mv-sub{font-size:10px;color:var(--ink-light);margin-top:1px}
+.mv-live{display:flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.mv-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease infinite}
+.mv-list{}
+.mv-row{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 14px;border-bottom:1px solid var(--rule);align-items:start}
+.mv-row:last-child{border-bottom:none}
+.mv-row.hot{background:rgba(212,134,10,.025)}
+.mv-row.churn{background:rgba(192,57,43,.025)}
+.mv-score{display:flex;flex-direction:column;align-items:center;gap:3px}
+.mv-num{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.mv-bar{width:30px;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.mv-fill{height:100%;border-radius:2px}
+.mv-body{display:flex;flex-direction:column;gap:3px}
+.mv-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mv-co{font-size:12px;font-weight:500;color:var(--ink)}
+.mv-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+.mv-tag.osha{background:var(--amber-light);color:var(--amber)}
+.mv-tag.permit{background:#E8F5E9;color:var(--green)}
+.mv-tag.lead{background:#EDE8F8;color:var(--purple-mid)}
+.mv-tag.churn{background:#FDECEA;color:var(--red)}
+.mv-signal{font-size:10px;color:var(--ink-light);line-height:1.4}
+.mv-actions{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.mv-btn{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--rule);border-radius:3px;color:var(--ink-mid);background:var(--bg)}
+.mv-btn.hi{border-color:var(--amber);color:var(--amber);background:var(--amber-light)}
+.mv-btn.red{border-color:var(--red);color:var(--red);background:#FDECEA}
+.mv-footer{padding:10px 14px;background:var(--bg-alt);border-top:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+.mv-stat{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light)}
+.mv-stat strong{color:var(--ink);font-weight:500}
+.mv-sep{width:2px;height:2px;border-radius:50%;background:var(--rule)}
+
+/* DIVIDER */
+.div-bar{padding:11px 48px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:16px}
+.div-text{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);flex-shrink:0}
+.div-line{flex:1;height:1px;background:var(--rule)}
+section{padding:64px 48px;border-bottom:1px solid var(--rule)}
+h2{font-family:'Fraunces',serif;font-size:clamp(26px,3.5vw,42px);font-weight:500;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+h2 em{font-style:italic;font-weight:300;color:var(--ink-mid)}
+.sec-sub{font-size:15px;color:var(--ink-mid);line-height:1.65;max-width:520px;margin-top:12px}
+.sec-hdr{margin-bottom:40px}
+
+/* VILLAIN */
+.villain{background:var(--bg-alt);padding:72px 48px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.villain h2{margin-bottom:12px}
+.villain-sub{font-size:16px;color:var(--ink-mid);line-height:1.65;max-width:560px;margin-bottom:44px}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:48px}
+.vcard{background:var(--surface);padding:28px 24px}
+.vcard-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+.vcard-stat{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber);margin-bottom:8px;letter-spacing:.04em}
+.vcard-title{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:8px}
+.vcard-body{font-size:13px;color:var(--ink-mid);line-height:1.65}
+.turn-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.turn-h{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,36px);font-weight:500;color:var(--ink);letter-spacing:-.025em;line-height:1.1;margin-bottom:14px}
+.turn-h em{font-style:italic;font-weight:300;color:var(--ink-mid)}
+.turn-body{font-size:15px;color:var(--ink-mid);line-height:1.7;max-width:620px}
+
+/* AUTOMATION SECTION */
+.auto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.acard{background:var(--surface);padding:28px 24px;position:relative}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.acard:nth-child(1)::before{background:var(--purple)}
+.acard:nth-child(2)::before{background:var(--amber)}
+.acard:nth-child(3)::before{background:var(--green)}
+.acard:nth-child(4)::before{background:var(--red)}
+.acard:nth-child(5)::before{background:var(--ink-light)}
+.acard:nth-child(6)::before{background:var(--purple-mid)}
+.acard-icon{margin-bottom:12px}
+.acard-title{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:8px}
+.acard-body{font-size:12px;color:var(--ink-mid);line-height:1.6;margin-bottom:12px}
+.acard-ex{background:var(--bg-alt);border-radius:6px;padding:10px 12px}
+.acard-ex-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+.acard-ex-text{font-size:11px;color:var(--ink-mid);line-height:1.5;font-style:italic}
+
+/* HOW IT WORKS */
+.how-rows{}
+.how-row{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--rule)}
+.how-row:last-child{border-bottom:none}
+.how-lbl{padding:40px 32px 40px 0;border-right:1px solid var(--rule)}
+.how-step{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+.how-name{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
+.how-name em{font-style:italic;font-weight:300;color:var(--amber)}
+.how-body{padding:40px 0 40px 40px}
+.how-hl{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em;margin-bottom:8px}
+.how-text{font-size:14px;color:var(--ink-mid);line-height:1.7;max-width:520px}
+
+/* WAITLIST — single column centered */
+.waitlist{padding:72px 48px;border-bottom:1px solid var(--rule)}
+
+/* EMAIL */
+.email-wrap{padding:56px 48px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.e-form{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
+.e-input{font-family:'DM Sans',sans-serif;font-size:14px;padding:12px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);flex:1;min-width:180px;outline:none}
+.e-input::placeholder{color:var(--ink-faint)}
+.e-input:focus{border-color:var(--amber)}
+.e-btn{background:var(--ink);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 22px;border-radius:8px;border:none;cursor:pointer;white-space:nowrap}
+.e-note{margin-top:8px;font-size:12px;color:var(--ink-faint)}
+
+footer{padding:24px 48px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.fw{text-decoration:none}
+.fw img{height:22px;width:auto}
+.fn{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.fl{display:flex;gap:20px}
+.fl a{font-size:12px;color:var(--ink-faint);text-decoration:none}
+
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-l{display:none}
+  .wm{position:static;transform:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:52px 20px 40px;border-right:none;border-bottom:1px solid var(--rule)}
+  .hero-right{padding:28px 20px}
+  .coverage{grid-template-columns:1fr;gap:14px}
+  .cov,.cov:last-child,.cov:nth-child(2){padding:0;border:none}
+  section,.villain,.waitlist,.email-wrap{padding:48px 20px}
+  .div-bar{padding:11px 20px}
+  .v-grid,.auto-grid{grid-template-columns:1fr}
+  .how-row{grid-template-columns:1fr}
+  .how-lbl{padding:24px 0 0;border-right:none;border-bottom:1px solid var(--rule)}
+  .how-body{padding:20px 0 24px}
+  .waitlist{padding:48px 20px}
+  .email-wrap{grid-template-columns:1fr}
+  footer{padding:20px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="tick hot"><div class="tdot"></div>Acme Fabrication · Compliance event · Score 94 · Email drafted and waiting</div>
+    <div class="tick"><div class="tdot"></div>Riverside Construction · New project · Score 88 · Asset matched · Ready to send</div>
+    <div class="tick hot"><div class="tdot"></div>Northgate Medical · Customer health drop · CS alerted · Renewal in 67 days</div>
+    <div class="tick"><div class="tdot"></div>Tri-State Freight · Regulatory filing · Score 79 · Talk track ready</div>
+    <div class="tick hot"><div class="tdot"></div>Acme Fabrication · Compliance event · Score 94 · Email drafted and waiting</div>
+    <div class="tick"><div class="tdot"></div>Riverside Construction · New project · Score 88 · Asset matched · Ready to send</div>
+    <div class="tick hot"><div class="tdot"></div>Northgate Medical · Customer health drop · CS alerted · Renewal in 67 days</div>
+    <div class="tick"><div class="tdot"></div>Tri-State Freight · Regulatory filing · Score 79 · Talk track ready</div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-l">
+    <a href="index.html" class="nav-link">Playbooks</a>
+    <a href="index.html" class="nav-link">Weekly brief</a>
+    <a href="#waitlist" class="nav-link">Join as design partner</a>
+  </div>
+  <a href="index.html" class="wm">
+    <img src="http://127.0.0.1:8080/images/BoostIdeal-1.svg" alt="BoostIdeal" class="logo">
+  </a>
+  <div class="nav-r">
+    <div class="nav-pill"><div class="npd"></div>7 spots left</div>
+    <a href="index.html" class="nav-back">← Back</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="kicker">Design partner program · 7 founding spots available</div>
+    <h1>Your team should be<br>closing. Not figuring<br><em>out who to call.</em></h1>
+    <p class="deck">We build the revenue system inside your HubSpot. <strong>Leads scored. Accounts prioritized. Customers protected.</strong> When something important happens, your team gets an alert with everything they need to win. Email written. Talk track ready. Asset matched. They just show up and close.</p>
+    <button onclick="openApply()" class="btn-ink" style="border:none;cursor:pointer;">Apply to join as a design partner →</button>
+    <p class="hero-note">$250 a month · 7 founding spots available · Rate locked forever · No sales call required</p>
+
+    <div class="coverage">
+      <div class="cov">
+        <div class="cov-label">New leads</div>
+        <div class="cov-title">Scored before your team opens a record</div>
+        <div class="cov-body">Fit, timing, and market moment — ranked automatically.</div>
+      </div>
+      <div class="cov">
+        <div class="cov-label">Open accounts</div>
+        <div class="cov-title">Ranked by who is ready right now</div>
+        <div class="cov-body">Real world events surface accounts worth calling today.</div>
+      </div>
+      <div class="cov">
+        <div class="cov-label">Existing customers</div>
+        <div class="cov-title">Churn caught. Expansion spotted.</div>
+        <div class="cov-body">Health drops flagged early. Upsell moments surfaced automatically.</div>
+      </div>
+    </div>
+
+    <div class="guarantee">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      10 accounts worth reaching out to in 30 days. Email written, context ready. If we miss, we keep going free.
+    </div>
+  </div>
+
+  <!-- MONDAY MORNING VIEW -->
+  <div class="hero-right">
+    <div class="mv">
+      <div class="mv-hdr">
+        <div class="mv-hdr-l">
+          <div class="mv-title">Your HubSpot · Monday 8:04am</div>
+          <div class="mv-sub">4 accounts need your attention today</div>
+        </div>
+        <div class="mv-live"><div class="mv-dot"></div>Live</div>
+      </div>
+
+      <div class="mv-list">
+        <div class="mv-row hot">
+          <div class="mv-score">
+            <div class="mv-num">94</div>
+            <div class="mv-bar"><div class="mv-fill" style="width:94%;background:#D4860A"></div></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-top"><span class="mv-co">Acme Fabrication</span><span class="mv-tag osha">Compliance</span></div>
+            <div class="mv-signal">Citation filed 2 days ago · Cleveland, OH · 340 employees</div>
+            <div class="mv-actions"><span class="mv-btn hi">Email ready</span><span class="mv-btn">Talk track</span><span class="mv-btn">Open</span></div>
+          </div>
+        </div>
+
+        <div class="mv-row hot">
+          <div class="mv-score">
+            <div class="mv-num">88</div>
+            <div class="mv-bar"><div class="mv-fill" style="width:88%;background:#D4860A"></div></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-top"><span class="mv-co">Riverside Construction</span><span class="mv-tag permit">New project</span></div>
+            <div class="mv-signal">$4.2M permit filed · Austin, TX · 3 days ago</div>
+            <div class="mv-actions"><span class="mv-btn hi">Email ready</span><span class="mv-btn">Asset matched</span><span class="mv-btn">Open</span></div>
+          </div>
+        </div>
+
+        <div class="mv-row">
+          <div class="mv-score">
+            <div class="mv-num">81</div>
+            <div class="mv-bar"><div class="mv-fill" style="width:81%;background:#5B3FCE"></div></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-top"><span class="mv-co">Greenfield Mfg</span><span class="mv-tag lead">New lead</span></div>
+            <div class="mv-signal">Strong ICP fit · Pricing page 3x this week</div>
+            <div class="mv-actions"><span class="mv-btn hi">Email ready</span><span class="mv-btn">Talk track</span></div>
+          </div>
+        </div>
+
+        <div class="mv-row churn">
+          <div class="mv-score">
+            <div class="mv-num" style="color:#C0392B">41</div>
+            <div class="mv-bar"><div class="mv-fill" style="width:41%;background:#C0392B"></div></div>
+          </div>
+          <div class="mv-body">
+            <div class="mv-top"><span class="mv-co">Northgate Medical</span><span class="mv-tag churn">Churn risk</span></div>
+            <div class="mv-signal">Engagement down 40% · Renewal in 67 days</div>
+            <div class="mv-actions"><span class="mv-btn red">CS alerted</span><span class="mv-btn hi">Email ready</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-footer">
+        <span class="mv-stat"><strong>4</strong> scored</span>
+        <div class="mv-sep"></div>
+        <span class="mv-stat"><strong>4</strong> emails ready</span>
+        <div class="mv-sep"></div>
+        <span class="mv-stat"><strong>2</strong> talk tracks</span>
+        <div class="mv-sep"></div>
+        <span class="mv-stat"><strong>0</strong> dashboards</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VILLAIN -->
+<div class="villain">
+  <h2>Every tool promises to fix this.<br><em>None of them do.</em></h2>
+  <p class="villain-sub">Because they hand you the tools and walk away. You figure out what to do with them. You build the logic. You source the data. You train the team. You check the dashboards. The work is still yours.</p>
+
+  <div class="v-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="vcard">
+      <div class="vcard-lbl">Scoring tools</div>
+      <div class="vcard-stat">A number on a record.</div>
+      <div class="vcard-title">No context. No direction. No one acts on it.</div>
+      <div class="vcard-body">Your team sees a score. They have no idea what it means, when to act, or what to say. So they go with gut feel. Same as before you bought the tool.</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-lbl">Enrichment and intent data</div>
+      <div class="vcard-stat">More fields. More tabs.</div>
+      <div class="vcard-title">Still no one knows who to call today.</div>
+      <div class="vcard-body">You know their tech stack and their funding round. You still do not know if they are ready right now. By the time your rep figures that out, the window is already gone.</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-lbl">Agencies</div>
+      <div class="vcard-stat">Week 6. Still onboarding.</div>
+      <div class="vcard-title">Results coming soon. They always are.</div>
+      <div class="vcard-body">Six weeks to start. Four more to see anything. A deck every month about strategy. Your best accounts went cold. Your competitors were already there.</div>
+    </div>
+    <div class="vcard">
+      <div class="vcard-lbl">AI workflow builders</div>
+      <div class="vcard-stat">Build it yourself.</div>
+      <div class="vcard-title">Powerful. If you know exactly what to build.</div>
+      <div class="vcard-body">You still need to define the ICP, design the scoring model, find the right data, build the workflow logic, and write the prompts. Most teams never finish. The ones that do spend months getting there.</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="turn-lbl">There is a different way</div>
+    <div class="turn-h">We build it. We run it.<br><em>Your team just closes.</em></div>
+    <p class="turn-body">We push the right data into your HubSpot — market events, product behavior, buying triggers in public records — score every lead, account, and customer against your specific ICP, and run automated plays the moment something crosses the threshold. Your team opens HubSpot on Monday to a prioritized queue. Emails written. Talk tracks ready. Assets matched. All inside the tools they already use.</p>
+  </div>
+</div>
+
+<!-- WHAT WE AUTOMATE -->
+<div class="div-bar">
+  <span class="div-text">What we build and run for you</span>
+  <div class="div-line"></div>
+</div>
+
+<section>
+  <div class="sec-hdr">
+    <h2>Leads. Accounts. Customers.<br><em>All covered. All automatic.</em></h2>
+    <p class="sec-sub">We build and run plays across your entire revenue motion. When something matters, the right action fires before anyone has to check a dashboard.</p>
+  </div>
+
+  <!-- TOP ROW: three coverage areas -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:24px;">
+    <div style="background:var(--surface);padding:24px 24px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">New leads</div>
+      <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:8px;">Scored before your team opens a record</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Every inbound lead ranked by fit, timing, and what is happening at the account right now. Your team knows who to call first before they touch anything.</div>
+    </div>
+    <div style="background:var(--surface);padding:24px 24px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">Open accounts</div>
+      <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:8px;">Ranked by who is ready to buy right now</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Real world events — compliance filings, new projects, hiring moves, regulatory triggers — surface the accounts worth calling this week, not next month.</div>
+    </div>
+    <div style="background:var(--surface);padding:24px 24px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">Existing customers</div>
+      <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:8px;">Churn caught. Expansion spotted.</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Health drops flagged 30 to 60 days before renewal. Product usage spikes flagged as upsell moments. Your CS team always knows first.</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW: the automated plays -->
+  <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);padding:12px 0 10px;">When something crosses your threshold, these fire automatically</div>
+
+  <div class="auto-grid">
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D2785" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <div class="acard-title">Slack alert with the full context</div>
+      <div class="acard-body">What happened, why it matters, the account score, and a direct link to the record. Your team knows everything before they click anything.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">Example</div>
+        <div class="acard-ex-text">Acme Fabrication · Score 94 · Compliance event filed · 340 employees · Cleveland OH · Email and talk track ready</div>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="acard-title">Email written for that exact moment</div>
+      <div class="acard-body">Not a template. Written for that specific account, that specific event, that specific day. One click to send or edit first. Your rep never starts from scratch.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">Example</div>
+        <div class="acard-ex-text">"Hi [Name], I noticed Acme received a compliance citation last week. We work with manufacturers in Ohio dealing with exactly this..."</div>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="acard-title">Talk track ready before the call</div>
+      <div class="acard-body">Opener, key questions, likely objections and how to handle them — all written for the specific moment. Your rep picks up the phone already knowing what to say.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">Example</div>
+        <div class="acard-ex-text">"Lead with the compliance event. Ask what their current process is. Key objection: timing. The window is 2 to 4 weeks."</div>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="acard-title">Right asset surfaced from your library</div>
+      <div class="acard-body">The right case study, one-pager, or guide matched to the account type and the moment. No digging through folders. No guessing what to attach.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">Example</div>
+        <div class="acard-ex-text">Matched: "How [Customer] resolved their compliance issue in 30 days" · Matched to: Manufacturing + safety event</div>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A726A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <div class="acard-title">Your ICP built from your best customers</div>
+      <div class="acard-body">We analyze your closed-won deals and customer data to define exactly what a great customer looks like for your business. Not a generic framework. Your actual ICP, built from evidence.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">What you get</div>
+        <div class="acard-ex-text">Company size, industry, role, tech stack, behavioral patterns, and the triggers that predict a closed deal — all defined from your own data.</div>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="acard-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B3FCE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="acard-title">Scoring model that updates itself</div>
+      <div class="acard-body">We build a scoring model around your ICP and wire it to every lead, account, and customer in HubSpot. It updates the moment something changes. No manual maintenance. No stale scores.</div>
+      <div class="acard-ex">
+        <div class="acard-ex-lbl">What you get</div>
+        <div class="acard-ex-text">Every record scored by fit, timing, engagement, and market moment. Priority rank visible on every record. No spreadsheets. No gut feel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="div-bar">
+  <span class="div-text">How it works</span>
+  <div class="div-line"></div>
+</div>
+
+<section>
+  <div class="sec-hdr">
+    <h2>Three steps. All inside<br><em>the HubSpot you already have.</em></h2>
+    <p class="sec-sub">Nothing new to learn. No new dashboard. No new tool your team has to remember to check.</p>
+  </div>
+
+  <div class="how-rows">
+    <div class="how-row">
+      <div class="how-lbl">
+        <div class="how-step">Step 01</div>
+        <div class="how-name">We push<br>in the data</div>
+      </div>
+      <div class="how-body">
+        <div class="how-hl">We source what your CRM is missing and push it in.</div>
+        <p class="how-text">Standard enrichment only tells you who they are. We push in what is happening right now — market events, regulatory filings, product usage data, buying triggers in public records. For teams selling into hard-to-reach markets, we find the moments your competitors never see.</p>
+      </div>
+    </div>
+    <div class="how-row">
+      <div class="how-lbl">
+        <div class="how-step">Step 02</div>
+        <div class="how-name">We build<br>the system</div>
+      </div>
+      <div class="how-body">
+        <div class="how-hl">Scoring model, workflows, actions — all built around your business.</div>
+        <p class="how-text">We spend 30 minutes understanding what a great customer looks like for you. Then we build the scoring model, configure the alert thresholds, set up the action layer, and wire it all to your HubSpot. Everything live by day 7. First alerts firing by day 14.</p>
+      </div>
+    </div>
+    <div class="how-row">
+      <div class="how-lbl">
+        <div class="how-step">Step 03</div>
+        <div class="how-name"><em>We run it.</em></div>
+      </div>
+      <div class="how-body">
+        <div class="how-hl">It runs every day. You touch nothing.</div>
+        <p class="how-text">The system scores, alerts, drafts, matches, and surfaces automatically. Your team opens HubSpot on Monday and everything is already done. Check-ins every two weeks for 90 days. Direct Slack to us if anything needs adjusting. You focus on closing. We handle the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL OVERLAY -->
+<div id="apply-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(20,18,16,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:var(--surface);border-radius:16px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.25);position:relative;">
+    <!-- Modal header -->
+    <div style="background:var(--purple);padding:24px 28px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;">Design Partner · Founding rate · 7 spots</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.2;margin-bottom:4px;">Apply to join as a design partner</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.5;">$250 a month. We respond the same day. No sales call.</div>
+      <button onclick="document.getElementById('apply-modal').style.display='none'" style="position:absolute;top:16px;right:18px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;">&#x2715;</button>
+    </div>
+    <!-- Modal form -->
+    <div id="apply-form-body" style="padding:24px 28px;display:flex;flex-direction:column;gap:10px;">
+      <input type="text" class="wl-input" placeholder="Your name" style="font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;outline:none;">
+      <input type="email" class="wl-input" placeholder="Work email" style="font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;outline:none;">
+      <input type="text" class="wl-input" placeholder="Company name" style="font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;outline:none;">
+      <select class="wl-select" style="font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink-mid);width:100%;outline:none;cursor:pointer;">
+        <option value="" disabled selected>What do you sell into?</option>
+        <option>Manufacturing</option>
+        <option>Construction</option>
+        <option>Healthcare</option>
+        <option>Logistics / Transportation</option>
+        <option>Financial Services</option>
+        <option>Other / Multiple</option>
+      </select>
+      <button onclick="handleApply()" style="background:var(--purple);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:13px;border-radius:8px;border:none;cursor:pointer;margin-top:4px;">Apply to join as a design partner →</button>
+      <div style="font-size:11px;color:var(--ink-faint);text-align:center;line-height:1.5;">No sales call. We respond the same day. $250/month, locked forever.</div>
+<div id="apply-error" style="display:none;font-size:12px;color:#c0392b;text-align:center;margin-top:4px;">Something went wrong — email us at hello@boostideal.com</div>
+    </div>
+    <!-- Thank you state (hidden by default) -->
+    <div id="apply-thanks" style="display:none;padding:40px 28px;text-align:center;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;display:block;"><polyline points="20 6 9 17 4 12"/></svg>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-.02em;margin-bottom:10px;">Application received.</div>
+      <div style="font-size:14px;color:var(--ink-mid);line-height:1.6;margin-bottom:20px;">We will be in touch the same day. Check your inbox — including spam just in case.</div>
+      <button onclick="document.getElementById('apply-modal').style.display='none'" style="background:var(--ink);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px 24px;border-radius:8px;border:none;cursor:pointer;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── SLACK WEBHOOK ────────────────────────────────────────────────────────────
+// Replace the URL below with your Slack incoming webhook URL.
+// Create one at: https://api.slack.com/messaging/webhooks
+// ─────────────────────────────────────────────────────────────────────────────
+var SLACK_WEBHOOK = 'YOUR_SLACK_WEBHOOK_URL_HERE';
+
+function openApply() {
+  document.getElementById('apply-modal').style.display = 'flex';
+  document.getElementById('apply-thanks').style.display = 'none';
+  document.getElementById('apply-form-body').style.display = 'flex';
+}
+
+function handleApply() {
+  var name = document.querySelector('#apply-form-body input[type=text]').value;
+  var email = document.querySelector('#apply-form-body input[type=email]').value;
+  var company = document.querySelectorAll('#apply-form-body input[type=text]')[1]?.value || '';
+  var market = document.querySelector('#apply-form-body select').value;
+  if (!name || !email) { alert('Please fill in your name and email.'); return; }
+  var btn = document.querySelector('#apply-form-body button');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('/api/apply', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, company, market })
+  })
+  .then(function(r) {
+    if (r.ok) {
+      document.getElementById('apply-form-body').style.display = 'none';
+      document.getElementById('apply-thanks').style.display = 'block';
+    } else { throw new Error('failed'); }
+  })
+  .catch(function() {
+    btn.textContent = 'Apply to join as a design partner →';
+    btn.disabled = false;
+    var err = document.getElementById('apply-error');
+    if (err) err.style.display = 'block';
+  });
+}
+
+document.getElementById('apply-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('apply-modal').style.display = 'none';
+});
+</script>
+
+<!-- WAITLIST -->
+<div class="div-bar">
+  <span class="div-text">Apply to join as a design partner</span>
+  <div class="div-line"></div>
+</div>
+
+<section id="waitlist" style="max-width:680px;margin:0 auto;padding:72px 48px;">
+
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:7px;margin-bottom:14px;"><div style="width:5px;height:5px;border-radius:50%;background:var(--amber);animation:pulse 2s ease infinite;"></div>Design partner program · 7 founding spots</div>
+    <h2 style="margin-bottom:12px;">Ready to stop guessing<br><em>and start closing?</em></h2>
+    <p style="font-size:15px;color:var(--ink-mid);line-height:1.7;max-width:520px;margin:0 auto;">We are working directly with seven founding teams. Not a free trial. Not a proof of concept. The real system, built and running inside your HubSpot in seven days.</p>
+  </div>
+
+  <!-- CTA ABOVE VALUE STACK -->
+  <div style="background:var(--purple);border-radius:14px;padding:24px 28px;margin-bottom:28px;text-align:center;">
+    <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:500;color:#fff;letter-spacing:-.01em;line-height:1.3;margin-bottom:6px;">Founding rate: $250 a month. Locked forever.</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:18px;">Public launch is $1,500 a month. Your rate never changes.</div>
+    <button onclick="openApply()" style="background:#fff;color:var(--purple);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;border:none;cursor:pointer;display:inline-block;">Apply to join as a design partner →</button>
+    <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;">No sales call. We respond the same day. 7 spots available.</div>
+  </div>
+
+  <!-- VALUE STACK -->
+  <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;">What you get as a design partner</div>
+
+  <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px;">
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Your ICP defined from your own data</div><div style="font-size:12px;color:var(--ink-mid);">Not a template. Built from your closed-won deals and best customers.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Scoring model built around your business</div><div style="font-size:12px;color:var(--ink-mid);">Every lead, account, and customer ranked. Updated automatically. Visible on every HubSpot record.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Signals sourced for your specific market</div><div style="font-size:12px;color:var(--ink-mid);">Public records, product data, market events — whatever predicts a buyer in your industry.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Automated plays live inside HubSpot by day 7</div><div style="font-size:12px;color:var(--ink-mid);">Alerts, emails, talk tracks, assets — all firing before day 14. Nothing for your team to configure.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Direct Slack access to the founders</div><div style="font-size:12px;color:var(--ink-mid);">Not a help desk. The people who built it. Something needs adjusting? Fixed this week.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Bi-weekly check-ins for 90 days</div><div style="font-size:12px;color:var(--ink-mid);">We review what fired, what worked, and what to tune. We run it. You just tell us what matters.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Real input into what gets built next</div><div style="font-size:12px;color:var(--ink-mid);">You are one of the first. What you need shapes what ships next. That influence disappears at public launch.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--amber-light);border-top:1px solid rgba(212,134,10,.2);">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="#D4860A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">$250 a month. Locked forever.</div><div style="font-size:12px;color:var(--ink-mid);">Public launch is $1,500 a month. You pay $250. Not a discount. A founding rate. It never goes up.</div></div>
+    </div>
+  </div>
+
+  <!-- ANCHOR BOX -->
+  <div style="padding:16px 20px;background:var(--ink);color:#F8F5F0;font-family:'Fraunces',serif;font-size:14px;font-weight:500;line-height:1.5;border-radius:8px;letter-spacing:-.01em;margin-bottom:24px;">
+    A consultant charges $10,000 to set up what we build in week one. You get it for $250 a month. Built and run by the people who designed it.
+  </div>
+
+  <!-- CTA BELOW VALUE STACK -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:32px 28px;background:var(--bg-alt);border:1px solid var(--rule);border-radius:14px;text-align:center;">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:6px;"><div style="width:5px;height:5px;border-radius:50%;background:var(--amber);animation:pulse 2s ease infinite;"></div>7 founding spots available</div>
+    <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2;">Everything above. $250 a month.<br><em>We respond the same day.</em></div>
+    <button onclick="openApply()" style="background:var(--purple-mid);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:15px 40px;border-radius:8px;border:none;cursor:pointer;margin-top:2px;">Apply to join as a design partner →</button>
+    <div style="font-size:12px;color:var(--ink-faint);">No sales call. No demo. No deck. We respond the same day.</div>
+  </div>
+
+</section>
+
+<!-- EMAIL -->
+<div class="div-bar">
+  <span class="div-text">Weekly brief</span>
+  <div class="div-line"></div>
+</div>
+
+<div class="email-wrap">
+  <div>
+    <h2>Get the brief.<br><em>Every week. Free.</em></h2>
+    <p style="font-size:15px;color:var(--ink-mid);line-height:1.65;margin-top:10px;">What is moving in your market, what it means, and the exact play to run. One email. No spam.</p>
+  </div>
+  <div>
+    <div class="e-form">
+      <input type="email" class="e-input" placeholder="your@email.com">
+      <button class="e-btn">Subscribe</button>
+    </div>
+    <p class="e-note">One email a week. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="fw"><img src="http://127.0.0.1:8080/images/BoostIdeal-1.svg" alt="BoostIdeal"></a>
+  <div class="fn">Your team should be closing. Not figuring out who to call. · 2026</div>
+  <div class="fl">
+    <a href="index.html">Playbooks</a>
+    <a href="/cdn-cgi/l/email-protection#b4dcd1d8d8dbf4d6dbdbc7c0ddd0d1d5d89ad7dbd9"><span class="__cf_email__" data-cfemail="87efe2

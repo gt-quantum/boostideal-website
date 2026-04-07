@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: playbooks
+    label: Playbooks
+    label_singular: Playbook
+    folder: _playbooks
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Category, name: category, widget: select, options: [Market plays, HubSpot best practices, Customer expansion, Industry guides, Weekly brief] }
+      - { label: Industry Tag, name: industry, widget: string, required: false, hint: "e.g. Manufacturing, Healthcare, All" }
+      - { label: Body, name: body, widget: text }
+      - { label: Link URL, name: link, widget: string, required: false, hint: "Leave blank if no download link yet" }
+      - { label: Published, name: published, widget: boolean, default: true }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - label: Partner Page Settings
+        name: partner
+        file: content.json
+        fields:
+          - { label: Founding spots available, name: spots, widget: string }
+          - { label: Founding price, name: founding_price, widget: string }
+          - { label: Public launch price, name: launch_price, widget: string }
+          - { label: Guarantee text, name: guarantee, widget: text }

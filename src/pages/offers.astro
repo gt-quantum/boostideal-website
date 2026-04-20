@@ -1,26 +1,320 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
-import Cta from '../components/Cta.astro';
+
+const deliverables = [
+  {
+    title: 'This-Week Focus List',
+    body: 'The top accounts your team should be working right now, ranked by fit, intent, and timing. Each one includes the signal that surfaced it.',
+  },
+  {
+    title: 'Pipeline Risk Flagging',
+    body: 'Every open deal tagged on-track, slipping, or won\u2019t close, with the reason.',
+  },
+  {
+    title: 'Expansion Shortlist',
+    body: 'Existing customers showing growth signals your reps haven\u2019t picked up on yet.',
+  },
+  {
+    title: 'Noise Cut',
+    body: 'The accounts and leads safe to deprioritize so your team stops spending cycles where there\u2019s no revenue.',
+  },
+];
+
+const metrics = [
+  { value: '4X', label: 'Pipeline in 6 Months' },
+  { value: '2.5X', label: 'Demand Gen ROI' },
+  { value: '30%', label: 'Higher Conversion Rates' },
+  { value: '40%', label: 'Net Revenue Retention' },
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Upload your accounts — 5 minutes',
+    body: "We'll send a simple CSV template, or you can export straight from HubSpot. No integration required.",
+  },
+  {
+    n: '2',
+    title: 'We score your data — 3 business days',
+    body: 'We run your accounts through the same scoring framework we build for clients. Fit, intent, timing.',
+  },
+  {
+    n: '3',
+    title: 'You get the audit — PDF + Loom walkthrough',
+    body: 'Four ranked lists and a short video explaining what we found. Your team can act on it the same day.',
+  },
+];
+
+const forYou = [
+  'Your team works in HubSpot and manages at least a few hundred accounts',
+  'You have a revenue team of 3+ (sales, CS, or marketing ops)',
+  'You\u2019ve tried scoring in HubSpot before and it didn\u2019t stick — or you\u2019ve never set it up',
+  'Deals slip without warning and you want to catch them earlier',
+  'You suspect there\u2019s expansion in your customer base nobody is tracking',
+];
+
+const notForYou = [
+  'Solo sellers or pre-revenue startups — this is built for teams',
+  'Teams not using HubSpot as their primary CRM',
+  'Anyone looking for a 30-minute sales call in disguise — this is an actual audit',
+];
+
+const faqs = [
+  {
+    q: 'Is this actually free?',
+    a: 'Yes. No credit card, no call required to get the audit. We give it away because when teams see what they\u2019re missing, a portion come back to ask us to fix it. That\u2019s the whole model.',
+  },
+  {
+    q: 'What do I need to send you?',
+    a: 'A list of your accounts. We\u2019ll provide a CSV template, or you can export the fields yourself from HubSpot. No integrations, no access to your instance required.',
+  },
+  {
+    q: 'Do you need access to our HubSpot?',
+    a: 'Not for the audit. If we end up working together, we\u2019d get access then — but not to generate the report.',
+  },
+  {
+    q: 'Will you pitch me after?',
+    a: 'We\u2019ll send the audit. If you want to talk about what it would take to fix what we found, reply and we\u2019ll set up a call. If you don\u2019t reply, you don\u2019t hear from us. That\u2019s it.',
+  },
+  {
+    q: 'How long does it take?',
+    a: 'Three business days from the time we get a clean account list.',
+  },
+  {
+    q: 'What if you find nothing?',
+    a: 'Then we\u2019ll tell you that, in writing, and you\u2019ll still have a scored view of your pipeline. We\u2019ve never had an audit come back empty, but if yours did, that itself is useful information.',
+  },
+  {
+    q: 'How many accounts do you audit?',
+    a: 'The audit covers up to 2,000 accounts at no cost. Bigger lists, we can quote a small fee or sample.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'The Missed Revenue Audit',
+  description:
+    'A free audit of a HubSpot account list. Returns a ranked report showing focus accounts, pipeline risk, expansion signals, and accounts to deprioritize.',
+  provider: {
+    '@type': 'Organization',
+    name: 'BoostIdeal',
+    url: 'https://boostideal.com',
+  },
+  areaServed: 'Global',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
 ---
 <Base
-  title="Offers — BoostIdeal"
-  description="Placeholder offers landing page. This is the reusable offer template."
+  title="The Missed Revenue Audit — Free HubSpot Audit | BoostIdeal"
+  description="A free audit that shows where your HubSpot is leaving revenue on the table. Upload your accounts. Get a ranked report back in 3 business days."
+  jsonLd={jsonLd}
 >
-  <Hero
-    eyebrow="Offer"
-    headline="An offer lives here"
-    sub="This page is built as a reusable landing template. Later, multiple offers will render via the offers content collection."
-  >
-    <Cta label="Claim it" />
-  </Hero>
+  <!-- Section 1 — Hero -->
+  <section class="border-b border-border">
+    <div class="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-24 text-center">
+      <p class="text-xs uppercase tracking-widest text-muted">The Missed Revenue Audit</p>
+      <h1 class="text-4xl font-semibold leading-tight md:text-6xl">
+        See the revenue your team is missing — before the quarter closes.
+      </h1>
+      <p class="max-w-2xl text-lg text-muted">
+        Upload your HubSpot accounts. We score them against fit, intent, and timing
+        signals, then send back a ranked audit showing where your pipeline, expansion,
+        and revenue risk actually are. Free. 3 business days. No pitch unless you ask.
+      </p>
+      <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+        <button
+          type="button"
+          data-open-contact
+          class="rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
+        >
+          Request My Audit
+        </button>
+      </div>
+      <p class="mt-2 text-xs text-muted">
+        Takes 5 minutes to submit. No credit card, no commitment.
+      </p>
+      <div
+        class="mt-8 flex aspect-video w-full items-center justify-center rounded-lg border-2 border-dashed border-border px-6 text-center text-sm text-muted"
+      >
+        <span>Visual placeholder — sample Missed Revenue Audit PDF mockup</span>
+      </div>
+    </div>
+  </section>
 
-  <Section>
-    <h2 class="text-2xl font-semibold">Template pattern</h2>
-    <p class="mt-2 text-muted">
-      Sections below will repeat across offer variants: proof, inclusions, FAQ, CTA.
-      Content comes from frontmatter once the collection drives multiple pages.
-    </p>
-  </Section>
+  <!-- Section 2 — Deliverable preview -->
+  <section id="what-youll-receive" class="border-b border-border">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">What You'll Receive</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        A short, ranked report — not a generic scorecard.
+      </h2>
+      <p class="mt-6 max-w-3xl text-lg text-muted">
+        The Missed Revenue Audit is a concrete deliverable. No dashboard to log into. No
+        long slide decks. One PDF, one 5–10 minute Loom walkthrough, four ranked lists
+        that tell your team exactly what to do next.
+      </p>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {deliverables.map((d) => (
+          <div class="rounded-lg border border-border p-6">
+            <h3 class="text-lg font-semibold">{d.title}</h3>
+            <p class="mt-2 text-muted">{d.body}</p>
+          </div>
+        ))}
+      </div>
+      <div
+        class="mt-12 flex aspect-video w-full items-center justify-center rounded-lg border-2 border-dashed border-border px-6 text-center text-sm text-muted"
+      >
+        <span>Visual placeholder — annotated screenshot of the audit PDF</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 — Why this exists -->
+  <section id="why" class="border-b border-border">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">Why We Do This</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        We kept seeing the same pattern.
+      </h2>
+      <p class="mt-6 text-lg text-muted">
+        B2B teams with good HubSpot data and active reps, still watching revenue walk out
+        the door. Not because of effort — because of focus. The Missed Revenue Audit is
+        the reveal step. It's the smallest version of what we do full-time for clients:
+        look at your accounts, tell you what matters, and make it actionable inside
+        HubSpot.
+      </p>
+      <p class="mt-4 text-lg text-muted">
+        Whether or not we end up working together, the audit is yours. You can hand it to
+        your team on Monday.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4 — Proof -->
+  <section id="proof" class="border-b border-border bg-surface">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <figure class="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
+        <blockquote class="text-xl leading-relaxed md:text-2xl">
+          "BoostIdeal and their team helped us define what our true ideal customer
+          actually looks like for Scrappy ABM, and provided the tools to track and
+          prioritize our target accounts automatically."
+        </blockquote>
+        <figcaption class="flex items-center gap-4">
+          <div
+            class="h-12 w-12 flex-none rounded-full border-2 border-dashed border-border"
+            aria-hidden="true"
+          ></div>
+          <div class="text-left">
+            <p class="font-semibold">Mason Cosby</p>
+            <p class="text-sm text-muted">CEO, Scrappy ABM</p>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+        {metrics.map((m) => (
+          <div class="flex flex-col items-center text-center">
+            <span class="text-4xl font-semibold">{m.value}</span>
+            <span class="mt-1 text-xs uppercase tracking-widest text-muted">{m.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5 — How It Works -->
+  <section id="how-it-works" class="border-b border-border">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">How It Works</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        Three steps. Most of the work is on us.
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {steps.map((s) => (
+          <div class="rounded-lg border border-border p-6">
+            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-accent font-semibold text-accent-fg">
+              {s.n}
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">{s.title}</h3>
+            <p class="mt-2 text-muted">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6 — Who It's For -->
+  <section id="who-its-for" class="border-b border-border">
+    <div class="mx-auto max-w-4xl px-6 py-20">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+        This audit is for you if…
+      </h2>
+      <ul class="mt-8 grid gap-3">
+        {forYou.map((item) => (
+          <li class="flex gap-3 text-base">
+            <span
+              class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-accent"
+              aria-hidden="true"
+            ></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="mt-12 text-xl font-semibold">Who it's not for.</h3>
+      <ul class="mt-4 grid gap-3">
+        {notForYou.map((item) => (
+          <li class="flex gap-3 text-base text-muted">
+            <span
+              class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-muted"
+              aria-hidden="true"
+            ></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 7 — FAQ -->
+  <section id="faq" class="border-b border-border">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">Questions</h2>
+      <dl class="mt-10 grid gap-6">
+        {faqs.map((f) => (
+          <div class="border-b border-border pb-6 last:border-b-0">
+            <dt class="text-lg font-semibold">{f.q}</dt>
+            <dd class="mt-2 text-muted">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Section 8 — Final CTA -->
+  <section aria-label="Final CTA">
+    <div class="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-20 text-center">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+        See what your team is missing.
+      </h2>
+      <p class="text-lg text-muted">
+        The report is free. The revenue is too — if you know where it is.
+      </p>
+      <button
+        type="button"
+        data-open-contact
+        class="mt-2 rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
+      >
+        Request My Audit
+      </button>
+      <p class="mt-1 text-xs text-muted">
+        5 minutes to submit. 3 business days to receive. No sales pitch unless you ask.
+      </p>
+    </div>
+  </section>
 </Base>

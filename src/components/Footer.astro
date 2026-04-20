@@ -2,8 +2,35 @@
 const year = new Date().getFullYear();
 ---
 <footer class="mt-24 border-t border-border">
-  <div class="mx-auto flex max-w-5xl flex-col items-center gap-2 px-6 py-10 text-sm text-muted">
-    <p>© {year} BoostIdeal</p>
-    <p class="text-xs">Placeholder footer — design pending.</p>
+  <div class="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-3">
+    <div>
+      <p class="text-lg font-semibold">BoostIdeal</p>
+      <p class="mt-1 text-sm text-muted">Account &amp; Lead Scoring for HubSpot Teams</p>
+    </div>
+
+    <nav class="flex flex-col gap-2 text-sm">
+      <a href="/#what-you-get" class="hover:underline">Lead Scoring</a>
+      <a href="/#what-you-get" class="hover:underline">Account Scoring</a>
+      <a href="/#how-it-works" class="hover:underline">How It Works</a>
+      <a href="/#resources" class="hover:underline">Resources</a>
+    </nav>
+
+    <div class="flex flex-col gap-2 text-sm">
+      <a href="mailto:hello@boostideal.com" class="hover:underline">hello@boostideal.com</a>
+      <a
+        href="https://www.linkedin.com/company/boostideal/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:underline"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="border-t border-border">
+    <p class="mx-auto max-w-6xl px-6 py-6 text-xs text-muted">
+      © {year} BoostIdeal — Placeholder footer styling; design pass pending.
+    </p>
   </div>
 </footer>

@@ -1,30 +1,46 @@
 import { useEffect, useRef, useState } from 'react';
 
-type FormKey = 'name' | 'email' | 'company' | 'message';
+type FormKey = 'firstName' | 'workEmail' | 'companyName' | 'accountsCount';
 type FormData = Record<FormKey, string>;
 type Status = 'idle' | 'submitting' | 'ok' | 'error';
 
 type Step = {
   key: FormKey;
   label: string;
-  type: 'text' | 'email' | 'textarea';
+  type: 'text' | 'email';
   required: boolean;
   autocomplete?: string;
+  placeholder?: string;
 };
 
+const OVERALL_HEADLINE = 'Show us your accounts. We will show you what matters.';
+const SUBMIT_LABEL = "Show Me What I'm Missing";
+const REASSURANCE = 'No spam. No hard sell. Just a clear look at your data.';
+
 const STEPS: Step[] = [
-  { key: 'name', label: "What's your name?", type: 'text', required: true, autocomplete: 'name' },
-  { key: 'email', label: "What's your email?", type: 'email', required: true, autocomplete: 'email' },
-  { key: 'company', label: 'Which company?', type: 'text', required: false, autocomplete: 'organization' },
-  { key: 'message', label: 'What can we help with?', type: 'textarea', required: false },
+  { key: 'firstName', label: "What's your first name?", type: 'text', required: true, autocomplete: 'given-name' },
+  { key: 'workEmail', label: "What's your work email?", type: 'email', required: true, autocomplete: 'email' },
+  { key: 'companyName', label: 'What company?', type: 'text', required: true, autocomplete: 'organization' },
+  {
+    key: 'accountsCount',
+    label: 'How many accounts are you currently managing in HubSpot?',
+    type: 'text',
+    required: false,
+    placeholder: 'Optional — rough number is fine',
+  },
 ];
 
 export default function ContactPopup() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<Status>('idle');
-  const [data, setData] = useState<FormData>({ name: '', email: '', company: '', message: '' });
-  const fieldRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const [data, setData] = useState<FormData>({
+    firstName: '',
+    workEmail: '',
+    companyName: '',
+    accountsCount: '',
+  });
+  const fieldRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -85,10 +101,15 @@ export default function ContactPopup() {
       }}
     >
       <div className="flex w-full max-w-lg flex-col gap-4 rounded-lg bg-bg p-8 text-fg shadow-md">
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-muted">
-            {status === 'ok' ? 'Done' : `Step ${step + 1} of ${STEPS.length}`}
-          </span>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-muted">
+              {status === 'ok' ? 'Done' : `Step ${step + 1} of ${STEPS.length}`}
+            </p>
+            <h2 id="contact-popup-title" className="mt-1 text-lg font-semibold leading-snug">
+              {OVERALL_HEADLINE}
+            </h2>
+          </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -101,30 +122,20 @@ export default function ContactPopup() {
 
         {status === 'ok' ? (
           <div>
-            <h2 id="contact-popup-title" className="text-2xl font-semibold">
-              Thanks — we'll be in touch.
-            </h2>
-            <p className="mt-2 text-muted">We received your message.</p>
+            <p className="text-xl font-semibold">Thanks — we'll be in touch.</p>
+            <p className="mt-2 text-muted">
+              We received your info and will review your accounts shortly.
+            </p>
           </div>
         ) : (
           <>
-            <h2 id="contact-popup-title" className="text-xl font-semibold">
-              {current.label}
-            </h2>
-
-            {current.type === 'textarea' ? (
-              <textarea
-                ref={fieldRef as React.RefObject<HTMLTextAreaElement>}
-                value={value}
-                onChange={(e) => setData({ ...data, [current.key]: e.target.value })}
-                rows={4}
-                className="w-full rounded-md border border-border bg-bg px-3 py-2"
-              />
-            ) : (
+            <label className="flex flex-col gap-2">
+              <span className="text-sm text-muted">{current.label}</span>
               <input
-                ref={fieldRef as React.RefObject<HTMLInputElement>}
+                ref={fieldRef}
                 type={current.type}
                 value={value}
+                placeholder={current.placeholder}
                 autoComplete={current.autocomplete}
                 onChange={(e) => setData({ ...data, [current.key]: e.target.value })}
                 onKeyDown={(e) => {
@@ -134,9 +145,9 @@ export default function ContactPopup() {
                     else setStep(step + 1);
                   }
                 }}
-                className="w-full rounded-md border border-border bg-bg px-3 py-2"
+                className="w-full rounded-md border border-border bg-bg px-3 py-2 text-base"
               />
-            )}
+            </label>
 
             {status === 'error' && (
               <p role="alert" className="text-sm text-red-700">
@@ -144,26 +155,35 @@ export default function ContactPopup() {
               </p>
             )}
 
-            <div className="flex items-center justify-between">
-              <button
-                type="button"
-                onClick={() => setStep(Math.max(0, step - 1))}
-                disabled={step === 0}
-                className="text-sm text-muted disabled:opacity-40"
-              >
-                Back
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  if (isLast) submit();
-                  else setStep(step + 1);
-                }}
-                disabled={!canAdvance || status === 'submitting'}
-                className="rounded-md bg-accent px-5 py-2.5 font-medium text-accent-fg disabled:opacity-50"
-              >
-                {status === 'submitting' ? 'Sending…' : isLast ? 'Send' : 'Continue'}
-              </button>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => setStep(Math.max(0, step - 1))}
+                  disabled={step === 0}
+                  className="text-sm text-muted disabled:opacity-40"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isLast) submit();
+                    else setStep(step + 1);
+                  }}
+                  disabled={!canAdvance || status === 'submitting'}
+                  className="rounded-md bg-accent px-5 py-2.5 font-medium text-accent-fg disabled:opacity-50"
+                >
+                  {status === 'submitting'
+                    ? 'Sending…'
+                    : isLast
+                      ? SUBMIT_LABEL
+                      : 'Continue'}
+                </button>
+              </div>
+              {isLast && (
+                <p className="text-xs text-muted">{REASSURANCE}</p>
+              )}
             </div>
           </>
         )}

@@ -17,15 +17,20 @@ export async function onRequestPost(context) {
       });
     }
 
-    const { name = '', email = '', company = '', message = '' } = body || {};
+    const {
+      firstName = '',
+      workEmail = '',
+      companyName = '',
+      accountsCount = '',
+    } = body || {};
 
     const slackPayload = {
       text:
         `*New contact form submission*\n` +
-        `*Name:* ${name}\n` +
-        `*Email:* ${email}\n` +
-        `*Company:* ${company || '—'}\n` +
-        `*Message:* ${message || '—'}`,
+        `*First Name:* ${firstName}\n` +
+        `*Work Email:* ${workEmail}\n` +
+        `*Company:* ${companyName || '—'}\n` +
+        `*Accounts in HubSpot:* ${accountsCount || '—'}`,
     };
 
     const response = await fetch(webhookUrl, {

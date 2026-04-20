@@ -1,34 +1,340 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
-import Cta from '../components/Cta.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'BoostIdeal',
   url: 'https://boostideal.com',
+  description: 'Account & Lead Scoring for HubSpot teams.',
 };
+
+const metrics = [
+  { value: '4X', label: 'Pipeline in 6 Months' },
+  { value: '2.5X', label: 'Demand Gen ROI' },
+  { value: '30%', label: 'Higher Conversion Rates' },
+  { value: '40%', label: 'Net Revenue Retention' },
+];
+
+const problemPoints = [
+  'They work the easiest accounts, not the best ones',
+  'They chase deals that will not close',
+  'They miss expansion sitting in existing customers',
+  'Problems show up after it is too late to act',
+];
+
+const steps = [
+  {
+    n: '1',
+    title: 'Organize',
+    body: 'We go into your HubSpot and clean up how your accounts, deals, and customers are structured so scoring can work accurately.',
+  },
+  {
+    n: '2',
+    title: 'Score',
+    body: 'We build scoring models that surface real opportunities and flag real risk — across your pipeline, your accounts, and your customer base.',
+  },
+  {
+    n: '3',
+    title: 'Activate',
+    body: 'Prioritized lists and next steps show up inside HubSpot so your team knows exactly who to work and what to do, without leaving the tools they already use.',
+  },
+];
+
+const services = [
+  {
+    name: 'Account Prioritization',
+    body: "A clear, scored list of the accounts worth your team's time this week — ranked by fit, signals, and timing so no rep has to guess where to start.",
+  },
+  {
+    name: 'Pipeline Risk Flagging',
+    body: 'Deals that are slipping get flagged before they fall out. Your team sees which opportunities need attention and what to do about them.',
+  },
+  {
+    name: 'Expansion Identification',
+    body: 'Customers ready to grow are surfaced before the window closes. Your team catches expansion early instead of missing it entirely.',
+  },
+  {
+    name: 'Noise Removal',
+    body: 'Accounts and leads that do not matter get filtered out. Your team stops wasting time on things that will not move.',
+  },
+];
+
+const fitChecklist = [
+  'Your team is active in HubSpot but not sure what to prioritize',
+  'Deals are slipping and you are not catching them early enough',
+  'You have customers who could expand but nobody is tracking it',
+  'Reps are deciding what to work based on gut, not data',
+  'You have good accounts in your CRM that are not getting touched',
+  'You have tried scoring before but it never got used',
+];
 ---
 <Base
-  title="BoostIdeal — Placeholder Homepage"
-  description="BoostIdeal homepage scaffold. Real copy and design arrive in the next phase."
+  title="BoostIdeal — Account & Lead Scoring for HubSpot Teams"
+  description="Account & Lead Scoring for HubSpot teams. We fix what your team focuses on so the right deals, expansions, and customers get attention."
   jsonLd={jsonLd}
 >
-  <Hero
-    eyebrow="BoostIdeal"
-    headline="Placeholder homepage"
-    sub="The Astro + Tailwind v4 scaffold is in place. Real content and design are coming."
-  >
-    <Cta label="Get in touch" />
-  </Hero>
+  <!-- Section 1 — Hero -->
+  <section class="border-b border-border">
+    <div class="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-24 text-center">
+      <p class="text-xs uppercase tracking-widest text-muted">
+        Account &amp; Lead Scoring for HubSpot Teams
+      </p>
+      <h1 class="text-4xl font-semibold leading-tight md:text-6xl">
+        Revenue is right in front of you. We show you where.
+      </h1>
+      <p class="max-w-2xl text-lg text-muted">
+        Your team is working hard. They are just not working the right accounts. We go into
+        your HubSpot and fix what they focus on — so the right deals, expansions, and
+        customers get attention.
+      </p>
+      <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+        <button
+          type="button"
+          data-open-contact
+          class="rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
+        >
+          See What You're Missing
+        </button>
+        <a
+          href="#how-it-works"
+          class="rounded-md border border-border px-6 py-3 font-medium"
+        >
+          Watch How It Works
+        </a>
+      </div>
+      <p class="mt-2 text-xs text-muted">
+        Trusted by B2B teams using HubSpot to prioritize pipeline and customers
+      </p>
+      <div
+        class="mt-8 flex aspect-video w-full items-center justify-center rounded-lg border-2 border-dashed border-border px-6 text-center text-sm text-muted"
+      >
+        <span>
+          Screenshot placeholder — prioritized account list
+          ("this week your team should focus on")
+        </span>
+      </div>
+    </div>
+  </section>
 
-  <Section>
-    <h2 class="text-2xl font-semibold">What lives here later</h2>
-    <p class="mt-2 text-muted">
-      Real hero copy, value props, social proof, product primer, and CTA sections will
-      replace this placeholder during the design + copy pass.
-    </p>
-  </Section>
+  <!-- Section 2 — Metrics -->
+  <section aria-label="Results" class="border-b border-border bg-surface">
+    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 py-12 md:grid-cols-4">
+      {metrics.map((m) => (
+        <div class="flex flex-col items-center text-center">
+          <span class="text-4xl font-semibold">{m.value}</span>
+          <span class="mt-1 text-xs uppercase tracking-widest text-muted">{m.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Section 3 — The Problem -->
+  <section id="problem" class="border-b border-border">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">The Problem</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        Your team is busy. They are just not focused on the right things.
+      </h2>
+      <p class="mt-6 text-lg text-muted">
+        Most teams work the easiest accounts, not the best ones. They chase deals that
+        will not close, miss customers ready to expand, and catch problems too late. In
+        most cases, 20 to 30 percent of real opportunity is not being touched. Your CRM
+        already has the signals. Your team just cannot see what matters.
+      </p>
+      <ul class="mt-8 grid gap-3">
+        {problemPoints.map((p) => (
+          <li class="flex gap-3 text-base">
+            <span
+              class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-accent"
+              aria-hidden="true"
+            ></span>
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4 — Solution / How It Works -->
+  <section id="how-it-works" class="border-b border-border">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">A Better Way</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        You do not need more tools. You need clarity.
+      </h2>
+      <p class="mt-6 max-w-3xl text-lg text-muted">
+        We set up a system inside your HubSpot that tells your team where to focus, what
+        matters right now, and what to do next. No new software to learn. No dashboards
+        to manage. It runs in the background and surfaces what is real.
+      </p>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {steps.map((s) => (
+          <div class="rounded-lg border border-border p-6">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-accent font-semibold text-accent-fg"
+            >
+              {s.n}
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">{s.title}</h3>
+            <p class="mt-2 text-muted">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5 — What You Get -->
+  <section id="what-you-get" class="border-b border-border">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <p class="text-xs uppercase tracking-widest text-muted">What We Deliver</p>
+      <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
+        We fix what your team works on — and make it visible inside HubSpot.
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {services.map((s) => (
+          <div class="rounded-lg border border-border p-6">
+            <h3 class="text-lg font-semibold">{s.name}</h3>
+            <p class="mt-2 text-muted">{s.body}</p>
+          </div>
+        ))}
+      </div>
+      <div
+        class="mt-12 flex aspect-video w-full items-center justify-center rounded-lg border-2 border-dashed border-border px-6 text-center text-sm text-muted"
+      >
+        <span>Screenshot placeholder — scored account list / weekly focus view</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6 — Social Proof -->
+  <section id="social-proof" class="border-b border-border bg-surface">
+    <div class="mx-auto max-w-5xl px-6 py-20">
+      <div class="grid gap-12 md:grid-cols-2">
+        <figure class="flex flex-col gap-4">
+          <blockquote class="text-xl leading-relaxed">
+            "BoostIdeal and their team helped us define what our true ideal customer
+            actually looks like for Scrappy ABM, and provided the tools to track and
+            prioritize our target accounts automatically."
+          </blockquote>
+          <figcaption class="flex items-center gap-4">
+            <div
+              class="h-12 w-12 flex-none rounded-full border-2 border-dashed border-border"
+              aria-hidden="true"
+            ></div>
+            <div>
+              <p class="font-semibold">Mason Cosby</p>
+              <p class="text-sm text-muted">CEO, Scrappy ABM</p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="flex flex-col gap-4">
+          <blockquote class="text-xl leading-relaxed">
+            "BoostIdeal replaces the guesswork with grounded data. We can verify whether
+            our clients are targeting the right accounts before we build anything, which
+            improves performance and protects our team's time."
+          </blockquote>
+          <figcaption class="flex items-center gap-4">
+            <div
+              class="h-12 w-12 flex-none rounded-full border-2 border-dashed border-border"
+              aria-hidden="true"
+            ></div>
+            <div>
+              <p class="font-semibold">Nikki Hershik</p>
+              {/* NEEDS CONFIRMATION — company name not in source files */}
+              <p class="text-sm text-muted">Company TBD</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7 — Who It's For -->
+  <section id="who-its-for" class="border-b border-border">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+        This is for you if…
+      </h2>
+      <ul class="mt-8 grid gap-3">
+        {fitChecklist.map((item) => (
+          <li class="flex gap-3 text-base">
+            <span
+              class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-accent"
+              aria-hidden="true"
+            ></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 8 — Mid-Page CTA -->
+  <section aria-label="Mid-page CTA" class="border-b border-border bg-surface">
+    <div class="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-20 text-center">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+        Not sure where your team's focus is going?
+      </h2>
+      <p class="text-lg text-muted">
+        Upload your accounts and we will show you what is being missed.
+      </p>
+      <button
+        type="button"
+        data-open-contact
+        class="mt-2 rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
+      >
+        See What You're Missing
+      </button>
+    </div>
+  </section>
+
+  <!-- Section 9 — About -->
+  <section id="about" class="border-b border-border">
+    <div
+      class="mx-auto grid max-w-5xl gap-10 px-6 py-20 md:grid-cols-[1fr_1.5fr] md:items-center"
+    >
+      <div
+        class="flex aspect-square w-full items-center justify-center rounded-lg border-2 border-dashed border-border text-center text-sm text-muted"
+      >
+        <span class="px-4">Founder headshot / team photo placeholder</span>
+      </div>
+      <div>
+        <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+          We built this because the problem kept showing up.
+        </h2>
+        <p class="mt-6 text-lg text-muted">
+          We work with B2B teams that are not lacking effort. They are lacking clarity.
+          After seeing the same pattern — good CRM data, active reps, and still too many
+          missed opportunities — we built BoostIdeal to fix it. We go inside your
+          HubSpot, rebuild how your team decides what to work, and make sure the right
+          accounts, deals, and customers are getting attention. No black box. No
+          guesswork. Just a clear system your team will actually use.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10 — Final CTA -->
+  <section aria-label="Final CTA">
+    <div class="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-20 text-center">
+      <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+        See what your team is missing.
+      </h2>
+      <p class="text-lg text-muted">
+        We will show you where your revenue is and what to do next.
+      </p>
+      <button
+        type="button"
+        data-open-contact
+        class="mt-2 rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
+      >
+        Upload Your Accounts
+      </button>
+      <p class="mt-1 text-xs text-muted">
+        No commitment required. Takes less than 5 minutes.
+      </p>
+    </div>
+  </section>
 </Base>

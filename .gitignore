@@ -17,5 +17,14 @@ Icon
 .vscode/
 .idea/
 
-# Node (in case added later)
+# Node
 node_modules/
+
+# Astro
+dist/
+.astro/
+
+# Env
+.env
+.env.local
+.env.*.local

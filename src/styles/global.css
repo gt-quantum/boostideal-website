@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* =============================================================================
+   DESIGN TOKENS — temporary neutral values.
+   Swap this @theme block wholesale during the design pass. All components and
+   pages reference these tokens via Tailwind utilities (bg-bg, text-fg,
+   text-muted, bg-accent, border-border, rounded-md, font-sans, etc.), so
+   replacing the block re-skins the whole site without touching components.
+   ============================================================================= */
+@theme {
+  --color-bg: #ffffff;
+  --color-fg: #0f172a;
+  --color-muted: #64748b;
+  --color-surface: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-accent: #2563eb;
+  --color-accent-fg: #ffffff;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+}

@@ -1,0 +1,13 @@
+---
+interface Props {
+  label?: string;
+  href?: string;
+}
+const { label = 'Get started', href } = Astro.props;
+const classes = 'inline-block rounded-md bg-accent px-6 py-3 font-medium text-accent-fg';
+---
+{href ? (
+  <a href={href} class={classes}>{label}</a>
+) : (
+  <button type="button" data-open-contact class={classes}>{label}</button>
+)}

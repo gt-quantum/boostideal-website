@@ -1,0 +1,20 @@
+---
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  sub?: string;
+}
+const { eyebrow, headline, sub } = Astro.props;
+---
+<section class="px-6 py-24">
+  <div class="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
+    {eyebrow && (
+      <div class="text-xs uppercase tracking-widest text-muted">{eyebrow}</div>
+    )}
+    <h1 class="text-4xl font-semibold leading-tight md:text-6xl">{headline}</h1>
+    {sub && <p class="max-w-2xl text-lg text-muted">{sub}</p>}
+    <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+      <slot />
+    </div>
+  </div>
+</section>

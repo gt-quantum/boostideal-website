@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Cta from '../components/Cta.astro';
+---
+<Base
+  title="Offers — BoostIdeal"
+  description="Placeholder offers landing page. This is the reusable offer template."
+>
+  <Hero
+    eyebrow="Offer"
+    headline="An offer lives here"
+    sub="This page is built as a reusable landing template. Later, multiple offers will render via the offers content collection."
+  >
+    <Cta label="Claim it" />
+  </Hero>
+
+  <Section>
+    <h2 class="text-2xl font-semibold">Template pattern</h2>
+    <p class="mt-2 text-muted">
+      Sections below will repeat across offer variants: proof, inclusions, FAQ, CTA.
+      Content comes from frontmatter once the collection drives multiple pages.
+    </p>
+  </Section>
+</Base>

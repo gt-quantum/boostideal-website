@@ -4,7 +4,6 @@ export default config({
   storage: {
     kind: 'github',
     repo: 'gt-quantum/boostideal-website',
-    branch: 'staging',
   },
   ui: {
     brand: { name: 'BoostIdeal' },

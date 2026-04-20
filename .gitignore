@@ -24,6 +24,9 @@ node_modules/
 dist/
 .astro/
 
+# Netlify build output
+.netlify/
+
 # Env
 .env
 .env.local

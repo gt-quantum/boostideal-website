@@ -17,46 +17,37 @@ const metrics = [
 ];
 
 const problemPoints = [
-  'They work the easiest accounts, not the best ones',
-  'They chase deals that will not close',
-  'They miss expansion sitting in existing customers',
-  'Problems show up after it is too late to act',
+  'work the easiest accounts',
+  'chase deals that will not close',
+  'ignore expansion sitting in their customers',
+  'miss early signs of churn',
 ];
 
-const steps = [
-  {
-    n: '1',
-    title: 'Organize',
-    body: 'We go into your HubSpot and clean up how your accounts, deals, and customers are structured so scoring can work accurately.',
-  },
-  {
-    n: '2',
-    title: 'Score',
-    body: 'We build scoring models that surface real opportunities and flag real risk — across your pipeline, your accounts, and your customer base.',
-  },
-  {
-    n: '3',
-    title: 'Activate',
-    body: 'Prioritized lists and next steps show up inside HubSpot so your team knows exactly who to work and what to do, without leaving the tools they already use.',
-  },
+const systemSignals = [
+  'where to focus',
+  'what matters right now',
+  'what to do next',
+];
+
+const systemOutcomes = [
+  'works the right accounts',
+  'catches expansion early',
+  'avoids wasted effort',
+  'acts at the right time',
 ];
 
 const services = [
   {
-    name: 'Account Prioritization',
-    body: "A clear, scored list of the accounts worth your team's time this week — ranked by fit, signals, and timing so no rep has to guess where to start.",
+    name: 'What matters right now',
+    body: 'A clear list of accounts and customers worth attention.',
   },
   {
-    name: 'Pipeline Risk Flagging',
-    body: 'Deals that are slipping get flagged before they fall out. Your team sees which opportunities need attention and what to do about them.',
+    name: 'What does not',
+    body: 'Low value noise gets filtered out.',
   },
   {
-    name: 'Expansion Identification',
-    body: 'Customers ready to grow are surfaced before the window closes. Your team catches expansion early instead of missing it entirely.',
-  },
-  {
-    name: 'Noise Removal',
-    body: 'Accounts and leads that do not matter get filtered out. Your team stops wasting time on things that will not move.',
+    name: 'What to do next',
+    body: 'Simple actions your team can take immediately.',
   },
 ];
 
@@ -81,12 +72,11 @@ const fitChecklist = [
         Account &amp; Lead Scoring for HubSpot Teams
       </p>
       <h1 class="text-4xl font-semibold leading-tight md:text-6xl">
-        Revenue is right in front of you. We show you where.
+        Revenue is right in front of you. We show you where it is and what to do next.
       </h1>
       <p class="max-w-2xl text-lg text-muted">
-        Your team is working hard. They are just not working the right accounts. We go into
-        your HubSpot and fix what they focus on — so the right deals, expansions, and
-        customers get attention.
+        Your team is working hard. They are just working the wrong things. Fix what your
+        team is focusing on across pipeline deals and customers.
       </p>
       <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
         <button
@@ -94,7 +84,7 @@ const fitChecklist = [
           data-open-contact
           class="rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
         >
-          See What You're Missing
+          See what you are missing
         </button>
         <a
           href="#how-it-works"
@@ -136,13 +126,8 @@ const fitChecklist = [
       <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
         Your team is busy. They are just not focused on the right things.
       </h2>
-      <p class="mt-6 text-lg text-muted">
-        Most teams work the easiest accounts, not the best ones. They chase deals that
-        will not close, miss customers ready to expand, and catch problems too late. In
-        most cases, 20 to 30 percent of real opportunity is not being touched. Your CRM
-        already has the signals. Your team just cannot see what matters.
-      </p>
-      <ul class="mt-8 grid gap-3">
+      <p class="mt-6 text-lg text-muted">Most teams:</p>
+      <ul class="mt-4 grid gap-3">
         {problemPoints.map((p) => (
           <li class="flex gap-3 text-base">
             <span
@@ -153,6 +138,10 @@ const fitChecklist = [
           </li>
         ))}
       </ul>
+      <p class="mt-8 text-lg text-muted">
+        In most cases, 20 to 30 percent of real opportunity is not being touched. Your
+        CRM already has the signals. Your team just cannot see what matters.
+      </p>
     </div>
   </section>
 
@@ -161,25 +150,45 @@ const fitChecklist = [
     <div class="mx-auto max-w-5xl px-6 py-20">
       <p class="text-xs uppercase tracking-widest text-muted">A Better Way</p>
       <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
-        You do not need more tools. You need clarity.
+        You do not need more tools
       </h2>
       <p class="mt-6 max-w-3xl text-lg text-muted">
-        We set up a system inside your HubSpot that tells your team where to focus, what
-        matters right now, and what to do next. No new software to learn. No dashboards
-        to manage. It runs in the background and surfaces what is real.
+        You need a system that tells your team where to focus, what matters right now,
+        and what to do next. We set that up inside your HubSpot.
       </p>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {steps.map((s) => (
-          <div class="rounded-lg border border-border p-6">
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-full bg-accent font-semibold text-accent-fg"
-            >
-              {s.n}
-            </div>
-            <h3 class="mt-4 text-lg font-semibold">{s.title}</h3>
-            <p class="mt-2 text-muted">{s.body}</p>
-          </div>
-        ))}
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border border-border p-6">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-muted">
+            A system that tells your team:
+          </h3>
+          <ul class="mt-4 grid gap-3">
+            {systemSignals.map((s) => (
+              <li class="flex gap-3 text-base">
+                <span
+                  class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-accent"
+                  aria-hidden="true"
+                ></span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-lg border border-border p-6">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-muted">
+            So your team:
+          </h3>
+          <ul class="mt-4 grid gap-3">
+            {systemOutcomes.map((s) => (
+              <li class="flex gap-3 text-base">
+                <span
+                  class="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-accent"
+                  aria-hidden="true"
+                ></span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -187,11 +196,14 @@ const fitChecklist = [
   <!-- Section 5 — What You Get -->
   <section id="what-you-get" class="border-b border-border">
     <div class="mx-auto max-w-5xl px-6 py-20">
-      <p class="text-xs uppercase tracking-widest text-muted">What We Deliver</p>
+      <p class="text-xs uppercase tracking-widest text-muted">What We Do</p>
       <h2 class="mt-2 text-3xl font-semibold leading-tight md:text-4xl">
-        We fix what your team works on — and make it visible inside HubSpot.
+        We fix what your team works on
       </h2>
-      <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <p class="mt-6 max-w-3xl text-lg text-muted">
+        We go into your HubSpot and rebuild how your team decides:
+      </p>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
         {services.map((s) => (
           <div class="rounded-lg border border-border p-6">
             <h3 class="text-lg font-semibold">{s.name}</h3>
@@ -320,7 +332,7 @@ const fitChecklist = [
   <section aria-label="Final CTA">
     <div class="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-20 text-center">
       <h2 class="text-3xl font-semibold leading-tight md:text-4xl">
-        See what your team is missing.
+        See what your team is missing
       </h2>
       <p class="text-lg text-muted">
         We will show you where your revenue is and what to do next.
@@ -330,11 +342,15 @@ const fitChecklist = [
         data-open-contact
         class="mt-2 rounded-md bg-accent px-6 py-3 font-medium text-accent-fg"
       >
-        Upload Your Accounts
+        Upload your accounts
       </button>
-      <p class="mt-1 text-xs text-muted">
-        No commitment required. Takes less than 5 minutes.
-      </p>
+      <button
+        type="button"
+        data-open-contact
+        class="mt-1 text-sm text-muted underline underline-offset-4"
+      >
+        Message Peter
+      </button>
     </div>
   </section>
 </Base>
